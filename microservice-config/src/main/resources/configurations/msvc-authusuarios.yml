@@ -1,0 +1,35 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: msvc-authusuarios
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "${MSVC_AUTHUSUARIOS_URL}"
+    username: "${MSVC_AUTHUSUARIOS_USERNAME}"
+    password: "${MSVC_AUTHUSUARIOS_PASSWORD}"
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: "${MSVC_AUTHUSUARIOS_JWK_SET_URI}"
+eigr:
+  app:
+    jwtSecret: "${JWT_SECRET}"
+    jwtExpirationMs: 86400000
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: "${MSVC_AUTHUSUARIOS_DEFAULTZONE}"
+  instance:
+    prefer-ip-address: true

@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: msvc-transacciones
+  config:
+    import: "${MICROSERVICE_TRANSACCIONES_IMPORT}"

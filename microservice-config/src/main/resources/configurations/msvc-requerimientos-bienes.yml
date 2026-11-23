@@ -1,0 +1,38 @@
+server:
+  port: 8001
+spring:
+  application:
+    name: msvc-requerimientos-bienes
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "${MSVC_REQUERIMIENTOS_BIENES_URL}"
+    username: "${MSVC_REQUERIMIENTOS_BIENES_USERNAME}"
+    password: "${MSVC_REQUERIMIENTOS_BIENES_PASSWORD}"
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "${MSVC_REQUERIMIENTOS_BIENES_ISSUER_URI}"
+  loadbalancer:
+    ribbon:
+      enabled: false
+eigr:
+  app:
+    jwtSecret: "${JWT_SECRET}"
+    jwtExpirationMs: 86400000
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: "${MSVC_REQUERIMIENTOS_BIENES_DEFAULTZONE}"
+  instance:
+    prefer-ip-address: true

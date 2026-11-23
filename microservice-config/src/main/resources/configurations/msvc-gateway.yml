@@ -1,0 +1,34 @@
+server:
+  port: 8080
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: true
+    service-url:
+      defaultZone: "${MSVC_GATEWAY_DEFAULTZONE}"
+spring:
+  application:
+    name: msvc-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      mvc:
+        routes:
+          - id: authusuarios
+            uri: lb://MSVC-AUTHUSUARIOS
+            predicates:
+              - Path=/api/auth/**, /api/modulos/**, /api/usuario/**, /api/permisos/**, /api/roles/**, /api/rolesypermisos/**
+          - id: requerimientos
+            uri: lb://MSVC-REQUERIMIENTOS-BIENES
+            predicates:
+              - Path=/api/requerimiento/**, /api/bien/**, /api/detalle-requerimiento/**, /api/justificacion/**
+          - id: transacciones
+            uri: lb://MSVC-TRANSACCIONES
+            predicates:
+              - Path=/api/factura/**, /api/pago/**
+          - id: comprasycotizaciones
+            uri: lb://MSVC-COMPRASYCOTIZACIONES
+            predicates:
+              - Path=/api/procura/**, /api/cotizacion/**, /api/compra/**, /api/detalle-cotizacion/**, /api/detalle-compra/**

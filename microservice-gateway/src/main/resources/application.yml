@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: msvc-gateway
+  config:
+    import: "${MICROSERVICE_GATEWAY_IMPORT}"

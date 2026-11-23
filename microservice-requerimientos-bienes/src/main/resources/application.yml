@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: msvc-requerimientos-bienes
+  config:
+    import: "${MICROSERVICE_REQUERIMIENTOS_BIENES_IMPORT}"

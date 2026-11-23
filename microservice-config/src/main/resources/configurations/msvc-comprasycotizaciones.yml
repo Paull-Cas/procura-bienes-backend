@@ -1,0 +1,43 @@
+server:
+  port: 8004
+spring:
+  application:
+    name: msvc-comprasycotizaciones
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: "${MSVC_COMPRASYCOTIZACIONES_URL}"
+    username: "${MSVC_COMPRASYCOTIZACIONES_USERNAME}"
+    password: "${MSVC_COMPRASYCOTIZACIONES_PASSWORD}"
+  jpa:
+    hibernate:
+      ddl-auto: none
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "${MSVC_COMPRASYCOTIZACIONES_ISSUER_URI}"
+  loadbalancer:
+    ribbon:
+      enabled: false
+eigr:
+  app:
+    jwtSecret: "${JWT_SECRET}"
+    jwtExpirationMs: 86400000
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-custom.html
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: "${MSVC_COMPRASYCOTIZACIONES_DEFAULTZONE}"
+  instance:
+    prefer-ip-address: true
+jpa:
+  hibernate:
+    ddl-auto: none
+  database: mysql
+  database-platform: org.hibernate.dialect.MySQL8Dialect
